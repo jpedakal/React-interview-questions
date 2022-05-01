@@ -1,6 +1,6 @@
 What is React?
 ----------------
-React is an open-source front-end JavaScript library that is used for building user interfaces, especially for single-page applications. It is used for handling view layer for web and mobile apps.
+React is an `open-source front-end JavaScript library` that is used for building user interfaces, especially for single-page applications. It is used for handling view layer for web and mobile apps.
 
 What are the major features of React?
 -------------------------------------
@@ -45,3 +45,49 @@ There are two possible ways to create a component.
         return <h1>{`Hello, ${this.props.message}`}</h1>
       }
     }
+
+What is the difference between state and props?
+-----------------------------------------------
+* Both props and state are plain JavaScript objects.
+* While both of them hold information that influences the output of render, they are different in their functionality with respect to component. 
+* Props get passed to the component similar to function parameters whereas state is managed within the component similar to variables declared within a function.
+
+what is the difference between element and component ?
+------------------------------------------------------
+
+An Element is a plain object describing what you want to appear on the screen in terms of the DOM nodes or other components. Elements can contain other Elements in their props. Creating a React element is cheap. Once an element is created, it is never mutated.
+
+The object representation of React Element would be as follows:
+
+    const element = React.createElement(
+      'div',
+      {id: 'login-btn'},
+      'Login'
+    )
+    
+The above React.createElement() function returns an object:
+
+    {
+      type: 'div',
+      props: {
+        children: 'Login',
+        id: 'login-btn'
+      }
+    }
+    
+And finally it renders to the DOM using `ReactDOM.render()`:
+
+    <div id='login-btn'>Login</div>
+    
+Whereas a component can be declared in several different ways. It can be a class with a render() method or it can be defined as a function. In either case, it takes props as an input, and returns a JSX tree as the output:
+
+    const Button = ({ onLogin }) =>
+      <div id={'login-btn'} onClick={onLogin}>Login</div>
+      
+Then JSX gets transpiled to a React.createElement() function tree:
+
+    const Button = ({ onLogin }) => React.createElement(
+      'div',
+      { id: 'login-btn', onClick: onLogin },
+      'Login'
+    )
