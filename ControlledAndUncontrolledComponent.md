@@ -5,7 +5,8 @@ Element data can be controlled by parent component through callbacks like onChan
 Element's data can be controlled by the DOM itself.
 
 
-<b>Controlled component</b>
+Controlled component Example:
+-----------------------------
 
 App.js
 
